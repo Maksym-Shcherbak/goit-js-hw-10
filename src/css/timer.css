@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(14, 32, 65);
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+/* CSS */
+button[data-start] {
+  margin-top: 20px;
+  appearance: none;
+  background-color: #ffffff;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #adcfff 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.24px;
+  outline: none;
+  padding: 0.5rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+button[data-start]:hover {
+  background-color: #ffc229;
+  box-shadow: #ff6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+button[data-start]:active {
+  transform: scale(1.025);
+}
+
+button[data-start]:disabled {
+  background-color: #e2d8c4;
+  transform: none;
+  box-shadow: none;
+}
+
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field {
+  padding: 1vw 3vw;
+  text-align: center;
+}
+
+.field span {
+  display: block;
+}
+
+.value {
+  color: rgb(0, 0, 255);
+  font-size: 8vw;
+  line-height: 1em;
+}
+
+.label {
+  font-size: 2vw;
+  color: rgb(138, 153, 171);
+}

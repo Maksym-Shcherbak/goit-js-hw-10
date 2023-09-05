@@ -1,0 +1,13 @@
+@import './common.css';
+
+body {
+  background-color: rgb(14, 32, 65);
+  color: rgb(255, 255, 255);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
