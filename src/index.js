@@ -7,13 +7,10 @@ const breeds = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 
-breeds.classList.add('visually-hidden');
-loader.classList.remove('visually-hidden');
-fetchBreeds()
+fetchBreeds(breeds, loader)
   .then(catBreeds => {
-    fillSelectBreeds(catBreeds, breeds);
     breeds.classList.remove('visually-hidden');
-    loader.classList.add('visually-hidden');
+    fillSelectBreeds(catBreeds, breeds);
     new SlimSelect({
       select: breeds,
       settings: {
@@ -22,20 +19,23 @@ fetchBreeds()
     });
   })
   .catch(error => {
-    Notify.failure(error.message);
+    Notify.failure(error.message, {
+      cssAnimationStyle: 'zoom',
+      closeButton: true,
+      position: 'center-top',
+    });
+  })
+  .finally(() => {
+    loader.classList.add('visually-hidden');
   });
 
 breeds.addEventListener('change', createCatCard);
 
 function createCatCard(e) {
-  catInfo.classList.add('visually-hidden');
-  loader.classList.remove('visually-hidden');
-  fetchCatByBreed(e.target.value)
+  fetchCatByBreed(e.target.value, loader, catInfo)
     .then(cat => {
-      const [breed] = cat;
-      const { breeds, url } = breed;
-      const [catBreeds] = breeds;
-      const { name, description, temperament } = catBreeds;
+      const { breeds, url } = cat[0];
+      const { name, description, temperament } = breeds[0];
       renderingCatInfo(url, name, description, temperament, catInfo);
       catInfo.classList.remove('visually-hidden');
       loader.classList.add('visually-hidden');
@@ -46,5 +46,9 @@ function createCatCard(e) {
         closeButton: true,
         position: 'center-top',
       });
+    })
+    .finally(() => {
+      catInfo.classList.remove('visually-hidden');
+      loader.classList.add('visually-hidden');
     });
 }

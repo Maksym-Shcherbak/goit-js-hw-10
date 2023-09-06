@@ -24,6 +24,7 @@
   border-radius: 100%;
   position: relative;
   animation: 3s yinYang linear infinite;
+  margin: 15px auto;
 }
 .loader:before {
   content: '';
@@ -61,7 +62,7 @@
 }
 
 .cat-info {
-  margin: 10px auto;
+  margin: 15px auto;
 }
 
 .ss-main {
@@ -75,7 +76,7 @@
   max-width: 375px;
   background-color: #fff;
   border-radius: 15px;
-  box-shadow: 0 4px 4px hsla(0, 0%, 0%, 0.251);
+  box-shadow: 2px 4px 4px hsla(0, 0%, 0%, 0.251);
 }
 
 .cat-info-thumb {
@@ -85,11 +86,25 @@
 
 .cat-info-img {
   object-fit: contain;
-  object-position: bottom;
+  object-position: center;
+}
+
+.cat-info-title {
+  margin-bottom: 10px;
+}
+
+.cat-info-desc {
+  margin-bottom: 10px;
 }
 
 .cat-info-temp-span {
   font-weight: 600;
+}
+
+@media screen and (max-width: 767px) {
+  .cat-info-thumb {
+    margin: 10px auto;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -103,10 +118,6 @@
   .cat-info-thumb {
     height: 350px;
     width: 450px;
-  }
-
-  .cat-info-img {
-    object-position: center;
   }
 
   .cat-info-container {
