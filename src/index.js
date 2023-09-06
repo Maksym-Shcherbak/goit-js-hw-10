@@ -7,7 +7,7 @@ const breeds = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 
-fetchBreeds(breeds, loader)
+fetchBreeds(loader)
   .then(catBreeds => {
     breeds.classList.remove('visually-hidden');
     fillSelectBreeds(catBreeds, breeds);

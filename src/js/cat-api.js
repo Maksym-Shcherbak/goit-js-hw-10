@@ -1,8 +1,7 @@
 import axios from 'axios';
 import { BASE_URL, header } from './api-config';
-export function fetchBreeds(elem_1, elem_2) {
-  elem_1.classList.add('visually-hidden');
-  elem_2.classList.remove('visually-hidden');
+export function fetchBreeds(elem_1) {
+  elem_1.classList.remove('visually-hidden');
   return axios('breeds').then(res => {
     if (res.data) {
       return res.data;
