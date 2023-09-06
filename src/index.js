@@ -6,9 +6,14 @@ import SlimSelect from 'slim-select';
 const breeds = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
+
+breeds.classList.add('visually-hidden');
+loader.classList.remove('visually-hidden');
 fetchBreeds()
   .then(catBreeds => {
     fillSelectBreeds(catBreeds, breeds);
+    breeds.classList.remove('visually-hidden');
+    loader.classList.add('visually-hidden');
     new SlimSelect({
       select: breeds,
       settings: {

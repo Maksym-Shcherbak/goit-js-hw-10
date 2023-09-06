@@ -85,7 +85,7 @@
 
 .cat-info-img {
   object-fit: contain;
-  object-position: center;
+  object-position: bottom;
 }
 
 .cat-info-temp-span {
@@ -96,13 +96,17 @@
   .cat-info {
     display: flex;
     gap: 18px;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
   }
 
   .cat-info-thumb {
-    height: 300px;
-    width: 500px;
+    height: 350px;
+    width: 450px;
+  }
+
+  .cat-info-img {
+    object-position: center;
   }
 
   .cat-info-container {
