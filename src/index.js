@@ -1,14 +1,20 @@
 import { fetchBreeds, fetchCatByBreed } from './js/cat-api';
-import fillSelectBreeds from './js/render';
+import { fillSelectBreeds, renderingCatInfo } from './js/render';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import SlimSelect from 'slim-select';
 
 const breeds = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
-const errorMessage = document.querySelector('.error');
 fetchBreeds()
   .then(catBreeds => {
-    breeds.innerHTML = fillSelectBreeds(catBreeds);
+    fillSelectBreeds(catBreeds, breeds);
+    new SlimSelect({
+      select: breeds,
+      settings: {
+        placeholderText: 'Choose your kitty',
+      },
+    });
   })
   .catch(error => {
     Notify.failure(error.message);
@@ -21,12 +27,11 @@ function createCatCard(e) {
   loader.classList.remove('visually-hidden');
   fetchCatByBreed(e.target.value)
     .then(cat => {
-      console.log(cat);
       const [breed] = cat;
       const { breeds, url } = breed;
       const [catBreeds] = breeds;
       const { name, description, temperament } = catBreeds;
-      catInfo.innerHTML = `<img src='${url}' class='cat-info-img' alt='cat' width='320'><h2 class='cat-info-title'>${name}</h2><p class='cat-info-desc'>${description}</p><p class='cat-info-temp'>Temperament: ${temperament}</p>`;
+      renderingCatInfo(url, name, description, temperament, catInfo);
       catInfo.classList.remove('visually-hidden');
       loader.classList.add('visually-hidden');
     })

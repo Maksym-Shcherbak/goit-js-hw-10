@@ -53,3 +53,32 @@
     transform: rotate(360deg);
   }
 }
+
+/* .cat-info {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: center;
+} */
+
+.ss-main {
+  width: 20%;
+  max-width: 230px;
+}
+
+.cat-info-thumb {
+  height: 400px;
+  width: 400px;
+}
+
+.cat-info-img {
+  display: block;
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.cat-info-temp-span {
+  font-weight: 600;
+}
