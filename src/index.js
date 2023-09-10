@@ -7,7 +7,9 @@ const breeds = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
 
-fetchBreeds(loader)
+loader.classList.remove('visually-hidden');
+
+fetchBreeds()
   .then(catBreeds => {
     breeds.classList.remove('visually-hidden');
     fillSelectBreeds(catBreeds, breeds);
@@ -32,7 +34,9 @@ fetchBreeds(loader)
 breeds.addEventListener('change', createCatCard);
 
 function createCatCard(e) {
-  fetchCatByBreed(e.target.value, loader, catInfo)
+  loader.classList.remove('visually-hidden');
+  catInfo.classList.add('visually-hidden');
+  fetchCatByBreed(e.target.value)
     .then(cat => {
       const { breeds, url } = cat[0];
       const { name, description, temperament } = breeds[0];

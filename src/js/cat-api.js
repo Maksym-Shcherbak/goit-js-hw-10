@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { BASE_URL, header } from './api-config';
-export function fetchBreeds(elem_1) {
-  elem_1.classList.remove('visually-hidden');
+export function fetchBreeds() {
   return axios('breeds').then(res => {
     if (res.data) {
       return res.data;
@@ -10,9 +9,7 @@ export function fetchBreeds(elem_1) {
   });
 }
 
-export function fetchCatByBreed(breedId, elem_1, elem_2) {
-  elem_1.classList.remove('visually-hidden');
-  elem_2.classList.add('visually-hidden');
+export function fetchCatByBreed(breedId) {
   return axios('images/search?breed_ids=' + `${breedId}`).then(res => {
     if (res.data) {
       return res.data;
